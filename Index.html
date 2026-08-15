@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Custom UI</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 470px;
+            background: #fff;
+            min-height: 100vh;
+            border-left: 1px solid #dbdbdb;
+            border-right: 1px solid #dbdbdb;
+            padding-top: 60px;
+            padding-bottom: 50px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            max-width: 470px;
+            height: 60px;
+            background: #fff;
+            border-bottom: 1px solid #dbdbdb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            z-index: 1000;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .header .icons i {
+            font-size: 22px;
+            margin-left: 18px;
+            cursor: pointer;
+        }
+
+        /* Stories (Square Curved) */
+        .stories-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 12px;
+            border-bottom: 1px solid #dbdbdb;
+        }
+
+        .stories-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .story {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 14px;
+            cursor: pointer;
+        }
+
+        .story-ring {
+            width: 65px;
+            height: 65px;
+            border-radius: 16px; /* हल्का स्क्वायर कर्व */
+            padding: 2px;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .story-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 14px; /* अंदर की इमेज का कर्व */
+            border: 2px solid #fff;
+            object-fit: cover;
+        }
+
+        .story-username {
+            font-size: 11px;
+            margin-top: 5px;
+            max-width: 65px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Post Feed */
+        .post {
+            border-bottom: 1px solid #dbdbdb;
+            margin-bottom: 10px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+        }
+
+        .post-user {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Profile Pic (Square Curved) */
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px; /* स्क्वायर कर्व प्रोफाइल पिक */
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-username {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Location Styling */
+        .location-tag {
+            font-size: 11px;
+            color: #0095f6;
+            margin-top: 1px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .post-image {
+            width: 100%;
+            max-height: 470px;
+            object-fit: cover;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 14px;
+            font-size: 22px;
+        }
+
+        .post-actions i {
+            cursor: pointer;
+            margin-right: 15px;
+        }
+
+        .post-likes {
+            font-weight: 600;
+            font-size: 14px;
+            padding: 0 14px;
+        }
+
+        .post-caption {
+            padding: 5px 14px 10px;
+            font-size: 14px;
+        }
+
+        .liked {
+            color: #ed4956;
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 470px;
+            height: 50px;
+            background: #fff;
+            border-top: 1px solid #dbdbdb;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 22px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">Instagram</div>
+        <div class="icons">
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-paper-plane"></i>
+        </div>
+    </div>
+
+    <!-- Stories (Square Curve) -->
+    <div class="stories-container">
+        <div class="story">
+            <div class="story-ring"><img class="story-img" src="https://picsum.photos/100/100?random=1" alt="user"></div>
+            <span class="story-username">Your story</span>
+        </div>
+        <div class="story">
+            <div class="story-ring"><img class="story-img" src="https://picsum.photos/100/100?random=2" alt="user"></div>
+            <span class="story-username">alex_dev</span>
+        </div>
+        <div class="story">
+            <div class="story-ring"><img class="story-img" src="https://picsum.photos/100/100?random=3" alt="user"></div>
+            <span class="story-username">tech_guru</span>
+        </div>
+    </div>
+
+    <!-- Post Feed -->
+    <div class="post">
+        <div class="post-header">
+            <div class="post-user">
+                <!-- Square Curved Profile Pic -->
+                <img class="post-avatar" src="https://picsum.photos/100/100?random=2" alt="Avatar">
+                <div class="user-info">
+                    <span class="post-username">alex_dev</span>
+                    <!-- Location with Icon -->
+                    <div class="location-tag" onclick="getLocation()">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span id="userLocation">लोकेशन ऑन करें</span>
+                    </div>
+                </div>
+            </div>
+            <i class="fa-solid fa-ellipsis"></i>
+        </div>
+
+        <img class="post-image" src="https://picsum.photos/500/500?random=10" alt="Post Image">
+
+        <div class="post-actions">
+            <div>
+                <i class="fa-regular fa-heart" id="likeBtn" onclick="toggleLike()"></i>
+                <i class="fa-regular fa-comment"></i>
+                <i class="fa-regular fa-paper-plane"></i>
+            </div>
+            <i class="fa-regular fa-bookmark"></i>
+        </div>
+        <div class="post-likes" id="likeCount">1,234 likes</div>
+        <div class="post-caption">
+            <b>alex_dev</b> UI updated with Square Curves & Location API! 📍✨
+        </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="bottom-nav">
+        <i class="fa-solid fa-house"></i>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-regular fa-square-plus"></i>
+        <i class="fa-solid fa-clapperboard"></i>
+        <i class="fa-regular fa-user"></i>
+    </div>
+</div>
+
+<script>
+    // Like Button Functionality
+    let isLiked = false;
+    let likes = 1234;
+
+    function toggleLike() {
+        const likeBtn = document.getElementById('likeBtn');
+        const likeCount = document.getElementById('likeCount');
+        
+        if (!isLiked) {
+            likeBtn.classList.remove('fa-regular');
+            likeBtn.classList.add('fa-solid', 'liked');
+            likes++;
+            isLiked = true;
+        } else {
+            likeBtn.classList.remove('fa-solid', 'liked');
+            likeBtn.classList.add('fa-regular');
+            likes--;
+            isLiked = false;
+        }
+        likeCount.innerText = likes.toLocaleString() + " likes";
+    }
+
+    // Browser Location Feature
+    function getLocation() {
+        const locationText = document.getElementById('userLocation');
+        if (navigator.geolocation) {
+            locationText.innerText = "लोकेशन ली जा रही है...";
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude.toFixed(2);
+                    const lon = position.coords.longitude.toFixed(2);
+                    locationText.innerText = `Lat: ${lat}, Lon: ${lon}`;
+                },
+                (error) => {
+                    locationText.innerText = "Permission Denied";
+                }
+            );
+        } else {
+            locationText.innerText = "Location Unsupported";
+        }
+    }
+</script>
+
+</body>
+</html>
